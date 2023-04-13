@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const username = process.env['MONGO_USERNAME']
 const password = process.env['MONGO_PASSWORD']
 
-let db = mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.mor8vos.mongodb.net/curddb?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log("db connected sucessfully") }).catch((err) => { console.log(`err`, err.message) })
+let db = mongoose.connect(`mongodb+srv://${'mithilesh_chauhan'}:${'Mithiatlas%407'}@cluster0.1koergc.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => { console.log("db connected sucessfully") }).catch((err) => { console.log(`err`, err.message) })
 
 
 const ejs = require("ejs")
