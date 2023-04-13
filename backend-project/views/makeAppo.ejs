@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Make-appointment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
+   
+
+    <link rel="stylesheet"  href="/css/style.css" >
+  </head>
+
+  
+  <body>
+   <div class="d-flex justify-content-end py-3" style="padding-right: 30px;" >
+  <a href="/home/#services_section" class="btn btn-primary ms-auto">Services</a>
+</div>
+    <div class="container text-center">
+    <h1>Make-Appointments</h1>
+    </div>
+<div class="container py-3">
+    <form class="row g-3 py-5" action="/make-appointments" method="post" >
+
+
+
+
+
+
+  <div class="col-md-6">
+    <label for="firstname" class="form-label">FirstName</label>
+    <input type="text" class="form-control"  placeholder="First name" aria-label="First name" name="firstname" id="firstname" >
+  </div>
+  <div class="col-md-6">
+     <label for="lastname" class="form-label">LastName</label>
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="lastname" id="lastname">
+  </div>
+
+      
+      
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" name="email" value=<%=email%> readonly>
+  </div>
+  <div class="col-md-6">
+    <label for="number" class="form-label">MobileNumber</label>
+    <input type="number" class="form-control" id="number" name="phonenumber">
+  </div>
+
+<div class="col-md-6">
+  <label for="datepicker">Choose a date: </label>
+  <input type="text" id="datepicker" name="date" required>
+</div>
+
+
+        <div class="col-md-4">
+    <label for="inputtime" class="form-label">Select-Time</label>
+    <select id="inputtime" class="form-select" name="time">
+      <option selected>10:00am-11:00am</option>
+      <option selected>11:00am-12:00pm</option>
+      <option selected>12:00pm-01:00pm</option>
+      <option selected>02:00pm-03:00pm</option>
+      <option selected>03:00pm-04:00pm</option>
+      <option selected>04:00pm-05:00pm</option>
+      <option selected>05:00pm-06:00pm</option>
+      <option selected>06:00pm-07:00pm</option>
+      <option selected>07:00pm-08:00pm</option>
+      <option selected>08:00pm-09:00pm</option>
+    </select>
+  </div>
+
+       <div class="col-md-4">
+    <label for="inputService" class="form-label">Select-Service</label>
+    <select id="inputService" class="form-select" name="service">
+      <option selected>HairCut</option>
+      <option selected>Shampoo and blow dry</option>
+      <option selected>Hair coloring</option>
+      <option selected>Hair treatments</option>
+      <option selected>Beard trims</option>
+      <option selected>Bridal packages</option>
+    </select>
+  </div>
+  
+
+           
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="enter address" name="address" >
+  </div>
+ 
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" class="form-control" id="inputCity" name="city">
+  </div>
+    
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState" class="form-select" name="state">
+      <option selected>Andharapradesh</option>
+      <option selected>Utharapradesh</option>
+      <option selected>Mumbai</option>
+      <option selected>Hyderbad</option>
+      <option selected>Madhayapradesh</option>
+    </select>
+  </div>
+  
+  
+  <div class="col-12 text-center py-3" >
+    <button type="submit" class="btn btn-primary">Book-appointment</button>
+  </div>
+</form>
+</div>
+
+
+
+    
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
+  <script>
+   $( function() {
+  $( "#datepicker" ).datepicker({
+    dateFormat: "yy-mm-dd",
+    minDate: 0,
+     maxDate: "+1M +10D",
+    timeFormat: "HH:mm:ss"
+  });
+     
+});
+    
+  </script>
+
+
+    
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script> 
+
+    
+    <script src="/script.js"></script>
+    
+  </body>
+</html>

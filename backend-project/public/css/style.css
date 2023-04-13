@@ -1,0 +1,41 @@
+/*all ejs body  */
+body{
+  background-color:whitesmoke;
+}
+
+/* home page sliders */
+.slider-image{
+  height:570px;
+  object-fit:cover;
+} 
+
+/* achievement session images */
+.imgfit{
+  height:300px;
+  object-fit:cover;
+  object-position: top
+}
+
+/*login page and register page  */
+.password-container {
+  position: relative;
+}
+
+.password-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.password-toggle.hide-password::before {
+  content: "\f06e"; /* Hide icon */
+}
+
+.password-toggle.show-password::before {
+  content: "\f070"; /* Show icon */
+}

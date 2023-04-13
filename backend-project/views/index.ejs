@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>home page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet"  href="/css/style.css" >
+  </head>
+  <body>
+   
+    <%- include('partials/navbar.ejs',{data:data}) %>
+    <%- include('partials/sliders.ejs',{sliderdata:sliderdata}) %>
+      
+      
+<!--     services section     -->
+  <section id="services_section" class="py-4">
+    <div class="container">
+ <h1 class="text-center text-success">OUR SERVICES</h1>
+<div class="row mt-4"> 
+
+  <% servicedata.forEach((item)=> { %> 
+<div class="col-md-4">       
+<div class="card text-white bg-success mb-3" style="width: 20rem;height:33rem "> 
+  <img src="<%=item.url%>" class="card-img-top" alt="photo" style="height:20rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%=item.title %></h5>
+    <p class="card-text"><%=item.subtitle %></p>
+    <a href="/make-appointments" class="btn btn-primary">Make-Appointments</a>
+  </div>
+</div>
+</div>
+ <% }); %>
+
+ </div>
+</div>      
+</section>
+<!--     services section     -->
+
+<!--    feedback section -->
+   <section id="feedback">
+     <form  action="/usersubmit" method="post" >
+     <div class="container ">
+       <h1 class="text-center text-success">GIVE VALUABLE FEEDBACK</h1>
+      <div class="row"> 
+      <div class="col-md-12">
+        
+
+   <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Email Here" >
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput2" class="form-label">Mobile Number</label>
+  <input name="phone" type="number" class="form-control" id="exampleFormControlInput2" placeholder="Enter Your MobileNumber Here" >
+</div>        
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Enter Your FeedBack</label>
+  <textarea  name="feedback" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+</div>
+<div class="form-group text-center">
+<button type="submit" class="btn btn-primary ">Submit</button>
+</div>       
+  </div>      
+</div> 
+ </div> 
+     </form>
+</section> 
+
+
+<!--    footer section -->
+   <section class="py-4">
+   <footer class="bg-dark text-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>About Us</h4>
+        <p>We believe that a great haircut can change your life, and we're here to help you find your perfect look.</p>
+      </div>
+      <div class="col-md-6">
+        <h4>Contact Us</h4>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-envelope"></i> xyz@example.com</li>
+          <li><i class="fas fa-phone"></i> (+91)9876543210</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Main St,  deljj, ind 10001</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="text-center">&copy; 2023 our Company. All Rights Reserved.</p>
+  </div>
+</footer>
+</section>
+        
+
+
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  </body>   
+</html>
