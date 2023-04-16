@@ -298,10 +298,10 @@ router.post("/addServices", isAuthenticated, async (req, res) => {
 router.get("/home", isAuthenticated, async (req, res) => {
   try {
     if(req.session.role=="admin"){
-      var navbar=await adminnavdoc.find({"_id":"64304ffde15cbed30ec8e81f"})
+      var navbar=await adminnavdoc.find({"_id":"6437b78ff3284e59a286800a"}) //6437b78ff3284e59a286800a     64304ffde15cbed30ec8e81f
     }
     else {
-   var  navbar = await document.find({ "_id": "6425912e18d06441716f6ddf" })
+   var  navbar = await document.find({ "_id": "64394ec0703b77d5be88149c" }) //64394ec0703b77d5be88149c    6425912e18d06441716f6ddf
     }
     //console.log(navbar[0].logo)
     let sliderdata = await sliderdoc.find();
@@ -320,7 +320,7 @@ router.get("/home", isAuthenticated, async (req, res) => {
 //show acheviments to user
 router.get("/home/achievements", isAuthenticated, async (req, res) => {
   try {
-    let navbar = await document.find({ "_id": "6425912e18d06441716f6ddf" })
+    let navbar = await document.find({ "_id": "64394ec0703b77d5be88149c" })  //64394ec0703b77d5be88149c     6425912e18d06441716f6ddf
     //console.log(navbar[0].logo)
     let achdata = await achdoc.find()
 
@@ -360,10 +360,16 @@ router.post("/addAchievements", isAuthenticated, async (req, res) => {
 
 
 
+// feedback render
 
+router.get("/usersubmit", isAuthenticated, async (req, res) => {
+  let sessionemail = req.session.user
+  res.render("feedback", { email: sessionemail })
+})
 
 //feed back
 router.post("/usersubmit", isAuthenticated, async (req, res) => {
+  
   let email = req.body.email
   let phone = req.body.phone
   let fb = req.body.feedback
@@ -454,13 +460,13 @@ router.post("/make-appointments", isAuthenticated, async (req, res) => {
 router.get("/home/our-appointments", isAuthenticated, async (req, res) => {
   try {
     if(req.session.role=="admin"){
-       var navbar=await adminnavdoc.find({"_id":"64304ffde15cbed30ec8e81f"})
+       var navbar=await adminnavdoc.find({"_id":"6437b78ff3284e59a286800a"})
       let appofulldata = await bookappodoc.find()
     
     res.render("ourAppo", {data: navbar,appodata: appofulldata,admin:true })
     }
     else{
-       let navbar = await document.find({ "_id": "6425912e18d06441716f6ddf" })
+       let navbar = await document.find({ "_id": "64394ec0703b77d5be88149c" })
     //console.log(req.session.user)
     let sessionemail = req.session.user
     let appodata = await bookappodoc.find({ email: sessionemail })
@@ -522,28 +528,36 @@ async function getbyid(req,res,next){
 //run below function for once to push data
 // async function run(){
 //   try{
-//     let navbar=new adminnavdoc ({
-//       companyname:"xyzCompany",
-//   logo:"/images/logo.jpj",
+//     let navbar=new document ({
+//       companyname:"The Barber Shop",
+//   logo:"https://thumbs.dreamstime.com/z/barber-shop-logo-label-retro-illustration-design-suitable-product-cover-labels-banner-print-etc-144595135.jpg",
 //   link:[{
-//     label:"Admin-Home",
-//     url:"/adminHome"
+//     label:"Home",
+//     url:"/Home"
 //   },
 //         {
-//           label:"Add-Achievements",
-//           url:"/addAchievements"
+//           label:"Achievements",
+//           url:"/home/achievements"
 //         },
 //         {
-//           label:"Add-Services",
-//           url:"/addServices"
+//           label:"Services",
+//           url:"/Home"
 //         },
 //         {
-//           label:"delete-Appointment",
-//           url:"/deleteAppointments"
+//           label:"My-Appointment",
+//           url:"/home/our-appointments"
 //         },
 //         {
-//           label:"See-Feedback",
-//           url:"/seefeedback"
+//           label:"Feedback",
+//           url:"/usersubmit"
+//         },
+//         {
+//           label:"Make-Appointment",
+//           url:"/make-appointment"
+//          },
+//         {
+//          label:"Logout",
+//          url:"/logout"
 //         }
 //        ]
 //     })
@@ -561,17 +575,19 @@ async function getbyid(req,res,next){
 
 // async function run(){
 //   try{
-//     let sliderdata=new sliderdoc(
-//     //   {
-//     //   title:"our shop is open",
-//     //   subtitle:"Looking good isn't self-importance, it's self-respect.",
-//     //   url:"/images/pic3.jpg"
-//     // }
+//    let sliderdata=new sliderdoc(
+//  {
+//  title:"We Are waiting for Angels.",
+//  subtitle:"Invest in your hair, it's the crown you never take off.",
+//    url:"https://m.media-amazon.com/images/I/71hSIkIgadL._AC_UF350,350_QL80_.jpg"   
+// }
 
 //      )
-//    // await sliderdata.save()
-// //       let sliderData = await sliderdoc.find();
-// // console.log(sliderData);this two lines is for checking
+//    await sliderdata.save()
+//          let sliderData = await sliderdoc.find();
+//  console.log(sliderData);
+ 
+// //  this two lines is for checking
 
 
 //   }
@@ -580,6 +596,12 @@ async function getbyid(req,res,next){
 //    }
 // }
 // run()
+
+//   {
+//       title:"our shop is open",
+//       subtitle:"Looking good isn't self-importance, it's self-respect.",
+//       url:"https://png.pngtree.com/png-clipart/20190611/original/pngtree-cartoons-depicting-barber-png-image_2820272.jpg"
+//     }
 // {
 //   title:"Comfortable,Relaxing,Invigorating. ",
 //     subtitle:"Come take your rightful place on our throne",
@@ -588,39 +610,56 @@ async function getbyid(req,res,next){
 //  {
 //  title:"we are witing for angels ",
 //  subtitle:"Invest in your hair, it's the crown you never take off.",
-//    url:"/images/pic.jpg"   
-// }above function send this two object also one by one for once it can save only one object
+//    url:"https://m.media-amazon.com/images/I/71hSIkIgadL._AC_UF350,350_QL80_.jpg" 
+// }
+
+// above function send this two object also one by one for once it can save only one object
 
 
 //push service data
 // async function run(){
 //   try{
 //     let servicedata=new services({
-//       url:"/images/service6.jpg",
+//       url:"https://i0.wp.com/www.weddingforward.com/wp-content/uploads/2022/07/indian-bridal-makeup-main-image.jpg?fit=313%2C500&ssl=1",
 //       title:"Bridal packages",
-//       subtitle:" Provide special packages for brides-to-be that include hair and makeup services for their wedding day."   
+//       subtitle:"Provide special packages for brides-to-be that include hair and makeup services for their wedding day."   
 //     })
 //    await servicedata.save()
-// //       let sliderData = await sliderdoc.find();
-// // console.log(sliderData);this two lines is for checking
+//       let sliderData = await sliderdoc.find();
+// console.log(servicedata);
+
+// // this two lines is for checking
+
 //     }
 //   catch(e){
 //      console.log(e.message)
 //    }
 // }
 // run()
+
 // above i insert 6 different service data see in database in service tabel
+
+//     let servicedata=new services({
+//       url:"/images/service6.jpg",
+//       title:"Bridal packages",
+//       subtitle:" Provide special packages for brides-to-be that include hair and makeup services for their wedding day."   
+//     })
+
+
+
 // push achievement data
 // async function run(){
 //   try{
 //     let achdata=new achdoc({
-//       url:"/images/ach6.jpg",
+//       url:"https://i.pinimg.com/originals/7c/ad/cb/7cadcb26acbbcf50fbc3e8d2c4016359.jpg",
 //       title:"Trendy Haircuts for the Cool Kids",
 //       subtitle:"A child's hair is a reflection of their innocence and joy."
 //     })
 //    await achdata.save()
-// //       let sliderData = await sliderdoc.find();
-// // console.log(sliderData);this two lines is for checking
+//       let sliderData = await sliderdoc.find();
+//    console.log(achdata);
+
+// // this two lines is for checking
 //     }
 //   catch(e){
 //      console.log(e.message)
